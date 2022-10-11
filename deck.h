@@ -13,9 +13,9 @@ class deck
     //constructors and deconstructor
     deck();
     ~deck(){};
-
     // Card member functions, friend functions
     void shuffle();
+    node<card> insert(node<card> *curr, const card& item);
     friend ostream& operator<<(ostream& ostr, const deck& deck);
 
     private:
@@ -27,22 +27,35 @@ class deck
 deck::deck()
 // Constructor to create the 52 card deck
 {
-     node<card> *temp = new node<card>(); 
-    node<card> *current = temp; 
-    
-    // 
+    string suit = "spades";
+ 
     for (int i = 0; i < 4; i++) {
         for (int j = 1; j<= 13; j++) {
-            // Current node<card*> set to point to a new allocated space for a node<card*>
-            current->next = new node<card> (new card(value(j), suit(i)));
-            // The current node<card*> is set to the newly created node<card*>
-            current = current->next;
+            if (i == 1)
+                suit = "hearts";
+            else if (i == 2)
+                suit = "clubs";
+            else if (i == 3)
+                suit = "diamonds";
+            
+            card newCard = card(j, suit);
+            *front = insert(front, newCard);
         }
-
     }
+}
 
-    front = temp->next;
-    delete temp; 
+node<card> deck::insert(node<card> *curr, const card& newCard)
+{
+	// declare pointer variables for the new node and the previous node
+	node<card> *newNode;
+
+	// allocate new dnode with item as initial value
+	newNode = new node<card>(newCard);
+
+	// update pointer fields in newNode
+	newNode->next = curr;
+	
+	return *newNode;
 }
 
 void deck::shuffle()
