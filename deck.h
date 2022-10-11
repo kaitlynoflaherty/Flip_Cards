@@ -11,8 +11,10 @@ class deck
 {
     public:
     //constructors and deconstructor
-    deck(node <card> *front);
+    deck();
     ~deck(){};
+    card NodeValue;
+    node<card> *next;
 
     // Card member functions, friend functions
     void shuffle();
@@ -27,9 +29,13 @@ class deck
 deck::deck()
 // Constructor to create the 52 card deck
 {
-     node<card> *temp = new node<card>(); 
+    node<card> *temp = new node<card>(); 
     node<card> *current = temp; 
     
+    node<card> *front;
+    *front.setValue(1);
+    *fro
+
     // 
     for (int i = 0; i < 4; i++) {
         for (int j = 1; j<= 13; j++) {

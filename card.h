@@ -7,56 +7,53 @@
 
 using namespace std;
 
+
 class card
 // Class used to create card objects and functions
 {
     public:
     //constructors and deconstructor
     card();
-    card(value _value, suit _suit);
+    card(int val, string suit);
     ~card(){};
 
     // Card member functions, friend functions
-    void setValue(value _value);
-    void setSuit(suit _suit);
+    void setValue(int value);
+    void setSuit(string suit);
     int getValue();
-    int getSuit();
+    string getSuit();
     friend ostream& operator<<(ostream& ostr, const card& card);
 
     private:
-    value _value;
-    suit _suit;
+    int _value;
+    string _suit;
 
 }; // end card class
 
-//Initializing card value and suit arrays 
-enum suit {Diamonds, Spades, Clubs, Hearts};
-enum value {Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, 
-              Queen, King};
 
 card::card()
 // Constructor for card class default value: Ace of Diamonds
 {
-    _value = Ace;
-    _suit = Diamonds;
+    _value = 1;
+    _suit = "Spade";
 }
 
-card::card(value _value, suit _suit)
+card::card(int value, string suit)
 {
-    _value = new_value;
-    _suit = new_suit;
+    _value = value;
+    _suit = suit;
 }
 
-void card::setValue(value _value)
+void card::setValue(int value)
 // Function used to 
 {
-    _value = new_value;
+    _value = value;
 }
 
-void card::setSuit(suit _suit)
+void card::setSuit(string suit)
 // Function used to 
 {
-    _suit = new_suit;
+    _suit = suit;
 }
 
 int card::getValue()
@@ -65,7 +62,7 @@ int card::getValue()
     return _value;
 }
 
-int card::getSuit()
+string card::getSuit()
 //Function used to access private data member _suit
 {
     return _suit;
