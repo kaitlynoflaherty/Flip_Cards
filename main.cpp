@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int calculate_points(int total_points, card& value, card& suit)
+int calculate_points(int total_points, int value, string suit)
 // Function to calculate the points per card chosen
 {
     if (value == 1)
@@ -27,10 +27,7 @@ int calculate_points(int total_points, card& value, card& suit)
     {
         total_points = 0;
     }
-    else
-    {
-        
-    }
+    else{}
     
     if (suit == "Heart")
     {
