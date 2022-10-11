@@ -90,7 +90,6 @@ void deck::shuffle()
     node<card> *prev, *curr;
     for (int i = 0; i<1000; i++)
     {
-        cout << "here" << endl;
         prev = front;
         curr = prev->next;
         int rand_int = rand() % 51;

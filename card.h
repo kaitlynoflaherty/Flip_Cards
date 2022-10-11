@@ -81,7 +81,7 @@ string card::getSuit()
 ostream& operator<<(ostream& ostr, const card& card)
 // Function to overload the '<<' operator to print card objects
 {
-    ostr << "The card is a " << card._value << " of " << card._suit << endl;
+    ostr << card._value << " of " << card._suit << endl;
     return ostr;
 }
 

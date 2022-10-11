@@ -21,17 +21,17 @@ int main()
 {
     //create deck & print
     deck d_52;
-    cout << d_52;
+    cout << d_52 << endl;
     
     // Shuffle deck three times & print
 
     d_52.shuffle();
-    cout << d_52;
+    cout << d_52 << endl;
 
     d_52.shuffle();
-    cout << d_52;
+    cout << d_52 << endl;
 
     d_52.shuffle();
-    cout << d_52;
+    cout << d_52 << endl;
 
 } // End main
