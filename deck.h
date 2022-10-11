@@ -39,8 +39,10 @@ deck::deck()
     front = NULL;
     string suit = "Spades"; // starting suit
  
-    for (int i = 0; i < 4; i++) {
-        for (int j = 13; j > 0; j--) {
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 13; j > 0; j--)
+        {
             if (i == 1)
                 suit = "Hearts"; // change the suit
             else if (i == 2)

@@ -22,6 +22,7 @@ int main()
     //create deck & print
     deck d_52;
     cout << d_52;
+    
     // Shuffle deck three times & print
 
     d_52.shuffle();
