@@ -27,16 +27,27 @@ class card
 
 }; // end card class
 
-void card::setValue()
+//Initializing card value and suit arrays 
+const char* suit[] = {"Diamonds", "Spades", "Clubs", "Hearts"};
+const char* value[] = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", 
+                       "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+
+card::card()
+// Constructor for card class
+{
+    
+}
+
+void card::setValue(const char* i)
 // Function used to 
 {
-    _value = ;
+    _value = value[i];
 }
 
 void card::setSuit()
 // Function used to 
 {
-    _suit = ;
+    _suit = suit;
 }
 
 int card::getValue()
