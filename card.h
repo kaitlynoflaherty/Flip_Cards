@@ -13,18 +13,19 @@ class card
     public:
     //constructors and deconstructor
     card();
-    card(int new_val, int new_suit);
+    card(int new_val, string new_suit);
     ~card(){};
 
     // Card member functions, friend functions
     void setValue(int val);
-    void setSuit(int su);
+    void setSuit(string suit);
     int getValue();
     int getSuit();
     friend ostream& operator<<(ostream& ostr, const card& card);
 
     private:
-    int _value, _suit;
+    int _value;
+    string _suit;
 
 }; // end card class
 
@@ -32,11 +33,11 @@ class card
 card::card()
 // Constructor for card class default value: Ace of Diamonds
 {
-    _value = 0;
-    _suit = 0;
+    _value;
+    _suit;
 }
 
-card::card(int new_value, int new_suit)
+card::card(int new_value, string new_suit)
 {
 	_value = new_val;
 	_suit = new_suit;
@@ -48,10 +49,10 @@ void card::setValue(int val)
     _value = val;
 }
 
-void card::setSuit(int su)
+void card::setSuit(string suit)
 // Function used to set the card suit
 {
-    _suit = su;
+    _suit = suit;
 }
 
 int card::getValue()
