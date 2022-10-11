@@ -11,11 +11,11 @@ class deck
 {
     public:
     //constructors and deconstructor
-    deck();
+    deck(node <card> *front);
     ~deck(){};
 
     // Card member functions, friend functions
-    
+    void shuffle();
     friend ostream& operator<<(ostream& ostr, const deck& deck);
 
     private:
@@ -24,8 +24,16 @@ class deck
 
 }; // end deck class
 
-deck::deck()
+deck::deck(node <card> *front)
+// Constructor to create the 52 card deck
+{
 
+}
+
+void deck::shuffle()
+{
+
+}
 
 
 #endif
