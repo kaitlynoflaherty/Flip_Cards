@@ -13,41 +13,50 @@ class card
     public:
     //constructors and deconstructor
     card();
+    card(value _value, suit _suit);
     ~card(){};
 
     // Card member functions, friend functions
-    void setValue();
-    void setSuit();
+    void setValue(value _value);
+    void setSuit(suit _suit);
     int getValue();
     int getSuit();
     friend ostream& operator<<(ostream& ostr, const card& card);
 
     private:
-    int _value, _suit;
+    value _value;
+    suit _suit;
 
 }; // end card class
 
 //Initializing card value and suit arrays 
-const char* suit[] = {"Diamonds", "Spades", "Clubs", "Hearts"};
-const char* value[] = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", 
-                       "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+enum suit {Diamonds, Spades, Clubs, Hearts};
+enum value {Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, 
+              Queen, King};
 
 card::card()
-// Constructor for card class
+// Constructor for card class default value: Ace of Diamonds
 {
-    
+    _value = Ace;
+    _suit = Diamonds;
 }
 
-void card::setValue(const char* i)
-// Function used to 
+card::card(value _value, suit _suit)
 {
-    _value = value[i];
+    _value = new_value;
+    _suit = new_suit;
 }
 
-void card::setSuit()
+void card::setValue(value _value)
 // Function used to 
 {
-    _suit = suit;
+    _value = new_value;
+}
+
+void card::setSuit(suit _suit)
+// Function used to 
+{
+    _suit = new_suit;
 }
 
 int card::getValue()
