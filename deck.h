@@ -19,8 +19,7 @@ class deck
     friend ostream& operator<<(ostream& ostr, const deck& deck);
 
     private:
-    //not sure if this is supposed to be private
-    node <card> *front;
+    node<card> *front;
 
 }; // end deck class
 
@@ -63,5 +62,19 @@ void deck::shuffle()
 
 }
 
+ostream& operator<<(ostream& ostr, const deck& deck)
+// Function to overload the '<<' operator to print card objects
+{
+
+    node<card> *curr;
+
+    curr = deck.front; // set curr to front of the list
+    while (curr != NULL) // continue until end of list
+    {
+        // output node value and move to the next node
+        cout << curr->nodeValue;
+        curr = curr->next;
+    }
+}
 
 #endif
