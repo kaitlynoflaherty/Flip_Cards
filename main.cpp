@@ -39,9 +39,18 @@ int calculate_points(int total_points, int value, string suit)
 
 int main()
 {
-    //start game
-
+    //create deck & print
+    deck d_52;
+    cout << d_52;
     // Shuffle deck three times
+    d_52.shuffle();
+    cout << d_52;
+
+    d_52.shuffle();
+    cout << d_52;
+
+    d_52.shuffle();
+    cout << d_52;
 
     // Initialize points
     int total_points = 0;
