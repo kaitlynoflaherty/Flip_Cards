@@ -7,24 +7,26 @@
 
 using namespace std;
 
+
 class card
 // Class used to create card objects and functions
 {
     public:
     //constructors and deconstructor
     card();
-    card(int new_val, int new_suit);
+    card(int val, string suit);
     ~card(){};
 
     // Card member functions, friend functions
-    void setValue(int val);
-    void setSuit(int su);
+    void setValue(int value);
+    void setSuit(string suit);
     int getValue();
-    int getSuit();
+    string getSuit();
     friend ostream& operator<<(ostream& ostr, const card& card);
 
     private:
-    int _value, _suit;
+    int _value;
+    string _suit;
 
 }; // end card class
 
@@ -32,26 +34,26 @@ class card
 card::card()
 // Constructor for card class default value: Ace of Diamonds
 {
-    _value = 0;
-    _suit = 0;
+    _value = 1;
+    _suit = "Spade";
 }
 
-card::card(int new_value, int new_suit)
+card::card(int value, string suit)
 {
-	_value = new_val;
-	_suit = new_suit;
+    _value = value;
+    _suit = suit;
 }
 
-void card::setValue(int val)
-// Function used to set the card value
+void card::setValue(int value)
+// Function used to 
 {
-    _value = val;
+    _value = value;
 }
 
-void card::setSuit(int su)
-// Function used to set the card suit
+void card::setSuit(string suit)
+// Function used to 
 {
-    _suit = su;
+    _suit = suit;
 }
 
 int card::getValue()
@@ -60,7 +62,7 @@ int card::getValue()
     return _value;
 }
 
-int card::getSuit()
+string card::getSuit()
 //Function used to access private data member _suit
 {
     return _suit;
