@@ -23,7 +23,7 @@ int calculate_points(int total_points, int value, string suit)
         total_points = total_points / 2;
         round(total_points);
     }
-    else if ((value >= 2 && value <= 6)
+    else if ((value >= 2 && value <= 6))
     {
         total_points = 0;
     }
