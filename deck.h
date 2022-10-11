@@ -86,7 +86,25 @@ node<card> deck::insert(node<card> *curr, const card& newCard)
 void deck::shuffle()
 {
     srand(time(0));
+    int incrementer = 0;
 
+    for (int i = 0; i++; i <1000)
+    {
+        node<card> *prev, *curr;
+        curr = front;
+        prev = curr->next;
+        int rand_int = rand() % 52;
+        while(incrementer != rand_int)
+        {
+            curr = curr->next;
+            prev = prev->next;
+            incrementer += 1;
+        }
+        prev->next = curr->next;
+        *front = insert(front, curr->nodeValue);
+        delete curr;
+        incrementer = 0;
+    }
 }
 
 ostream& operator<<(ostream& ostr, const deck& deck)
