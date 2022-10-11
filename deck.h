@@ -11,7 +11,7 @@ class deck
 {
     public:
     //constructors and deconstructor
-    deck(node <card> *front);
+    deck();
     ~deck(){};
 
     // Card member functions, friend functions
