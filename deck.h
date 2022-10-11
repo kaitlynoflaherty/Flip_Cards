@@ -36,6 +36,7 @@ class deck
 deck::deck()
 // Constructor to create the 52 ordered card deck
 {
+    front = new node<card>();
     string suit = "Spades"; // starting suit
  
     for (int i = 0; i < 4; i++) {
@@ -71,6 +72,7 @@ deck::~deck()
 
 node<card> deck::insert(node<card> *curr, const card& newCard)
 {
+    cout << "here" << endl;
 	// Declare pointer for the new node
 	node<card> *newNode;
 
@@ -118,7 +120,7 @@ ostream& operator<<(ostream& ostr, const deck& deck)
     while (curr != NULL) // continue until end of list
     {
         // output node value and move to the next node
-        cout << curr->nodeValue;
+        ostr << curr->nodeValue;
         curr = curr->next;
     }
     delete curr;
