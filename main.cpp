@@ -1,12 +1,11 @@
-/*
-*Project #2: Flip Cards part a
-
-* Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
-
-* Description: Main function for Flip Cards part a program.
-* Implements a function main() which initializes a deck, d_52, and prints the 
-  deck in order. The deck is then shuffled and printed three tines.
-*/
+//Project #2: Flip Cards part a
+//
+// Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
+//
+// Description: Main function for Flip Cards part a program.
+// Implements a function main() which initializes a deck, d_52, and prints the 
+// deck in order. The deck is then shuffled and printed three tines.
+//
 
 #include <iostream>
 #include <stdlib.h>
