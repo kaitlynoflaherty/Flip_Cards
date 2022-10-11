@@ -12,7 +12,7 @@ class deck
     public:
     //constructors and deconstructor
     deck();
-    ~deck(){};
+    ~deck();
     // Card member functions, friend functions
     void shuffle();
     node<card> insert(node<card> *curr, const card& item);
@@ -22,6 +22,7 @@ class deck
     node<card> *front;
 
 }; // end deck class
+
 
 deck::deck()
 // Constructor to create the 52 card deck
@@ -43,6 +44,19 @@ deck::deck()
     }
 }
 
+// Destructor that deletes linked list
+deck::~deck()
+{
+    node<card> *temp;
+    while(front != NULL)
+    {
+        temp = front;
+        front = front->next;
+        delete temp;
+    }
+}
+
+
 node<card> deck::insert(node<card> *curr, const card& newCard)
 {
 	// declare pointer variables for the new node and the previous node
@@ -59,6 +73,7 @@ node<card> deck::insert(node<card> *curr, const card& newCard)
 
 void deck::shuffle()
 {
+    srand(time(0));
 
 }
 
