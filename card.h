@@ -13,50 +13,45 @@ class card
     public:
     //constructors and deconstructor
     card();
-    card(value _value, suit _suit);
+    card(int new_val, int new_suit);
     ~card(){};
 
     // Card member functions, friend functions
-    void setValue(value _value);
-    void setSuit(suit _suit);
+    void setValue(int val);
+    void setSuit(int su);
     int getValue();
     int getSuit();
     friend ostream& operator<<(ostream& ostr, const card& card);
 
     private:
-    value _value;
-    suit _suit;
+    int _value, _suit;
 
 }; // end card class
 
-//Initializing card value and suit arrays 
-enum suit {Diamonds, Spades, Clubs, Hearts};
-enum value {Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, 
-              Queen, King};
 
 card::card()
 // Constructor for card class default value: Ace of Diamonds
 {
-    _value = Ace;
-    _suit = Diamonds;
+    _value = 0;
+    _suit = 0;
 }
 
-card::card(value _value, suit _suit)
+card::card(int new_value, int new_suit)
 {
-    _value = new_value;
-    _suit = new_suit;
+	_value = new_val;
+	_suit = new_suit;
 }
 
-void card::setValue(value _value)
-// Function used to 
+void card::setValue(int val)
+// Function used to set the card value
 {
-    _value = new_value;
+    _value = val;
 }
 
-void card::setSuit(suit _suit)
-// Function used to 
+void card::setSuit(int su)
+// Function used to set the card suit
 {
-    _suit = new_suit;
+    _suit = su;
 }
 
 int card::getValue()
