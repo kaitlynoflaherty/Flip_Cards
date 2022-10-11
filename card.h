@@ -1,3 +1,11 @@
+// Project #2: Flip Card part a
+// 
+// Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
+//
+// Description: Header file for the card class that stores a single card.
+// Assumption: A card includes a value and a suit. The card value will be from 
+// 1-13 and the suit will club, diamond, heart or spade.
+
 #ifndef CARD_CLASS
 #define CARD_CLASS
 
@@ -32,26 +40,28 @@ class card
 
 
 card::card()
-// Constructor for card class default value: Ace of Diamonds
+// Default constructor for card object with default value: Ace of Spades
 {
     _value = 1;
-    _suit = "Spade";
+    _suit = "Spades";
 }
 
+
 card::card(int value, string suit)
+// Constructor: initializes card object with _value "value" and _suit "suit"
 {
     _value = value;
     _suit = suit;
 }
 
 void card::setValue(int value)
-// Function used to 
+// Function used to set the card value
 {
     _value = value;
 }
 
 void card::setSuit(string suit)
-// Function used to 
+// Function used to set the card suit
 {
     _suit = suit;
 }

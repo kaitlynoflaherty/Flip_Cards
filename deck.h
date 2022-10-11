@@ -1,3 +1,12 @@
+// Project #2: Flip Card part a
+// 
+// Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
+//
+// Description: Header file for the deck class that stores a linked list of cards.
+// Assumption: Each node of the linked list is a single card and no cards are 
+// the same.
+
+
 #ifndef DECK_CLASS
 #define DECK_CLASS
 
@@ -25,30 +34,33 @@ class deck
 
 
 deck::deck()
-// Constructor to create the 52 card deck
+// Constructor to create the 52 ordered card deck
 {
-    string suit = "spades";
+    string suit = "Spades"; // starting suit
  
     for (int i = 0; i < 4; i++) {
         for (int j = 1; j<= 13; j++) {
             if (i == 1)
-                suit = "hearts";
+                suit = "Hearts"; // change the suit
             else if (i == 2)
-                suit = "clubs";
+                suit = "Clubs"; // change the suit 
             else if (i == 3)
-                suit = "diamonds";
+                suit = "Diamonds"; // change the suit
             
+            // insert a new card at front of deck
             card newCard = card(j, suit);
             *front = insert(front, newCard);
         }
     }
 }
 
-// Destructor that deletes linked list
+
 deck::~deck()
+// Destructor that deletes the linked list
 {
+
     node<card> *temp;
-    while(front != NULL)
+    while(front != NULL) // iterates to end of deck
     {
         temp = front;
         front = front->next;
@@ -59,16 +71,16 @@ deck::~deck()
 
 node<card> deck::insert(node<card> *curr, const card& newCard)
 {
-	// declare pointer variables for the new node and the previous node
+	// Declare pointer for the new node
 	node<card> *newNode;
 
-	// allocate new dnode with item as initial value
+	// Allocate new node with card as initial value
 	newNode = new node<card>(newCard);
 
-	// update pointer fields in newNode
+	// Make newNode the front of the curr linked list
 	newNode->next = curr;
 	
-	return *newNode;
+	return *newNode; // return the new list
 }
 
 void deck::shuffle()
