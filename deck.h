@@ -36,11 +36,11 @@ class deck
 deck::deck()
 // Constructor to create the 52 ordered card deck
 {
-    front = new node<card>();
+    front = NULL;
     string suit = "Spades"; // starting suit
  
     for (int i = 0; i < 4; i++) {
-        for (int j = 1; j<= 13; j++) {
+        for (int j = 13; j > 0; j--) {
             if (i == 1)
                 suit = "Hearts"; // change the suit
             else if (i == 2)
@@ -49,8 +49,18 @@ deck::deck()
                 suit = "Diamonds"; // change the suit
             
             // insert a new card at front of deck
-            card newCard = card(j, suit);
-            *front = insert(front, newCard);
+            card newCard(j, suit);
+            node<card> *newNode;
+            newNode = new node<card>(newCard);
+            if (front == NULL)
+            {
+                front = newNode;
+            }
+            else
+            {
+                newNode->next = front;
+                front = newNode;
+            }
         }
     }
 }
@@ -59,43 +69,29 @@ deck::deck()
 deck::~deck()
 // Destructor that deletes the linked list
 {
-
-    node<card> *temp;
-    while(front != NULL) // iterates to end of deck
-    {
-        temp = front;
-        front = front->next;
-        delete temp;
-    }
+    // node<card> *temp;
+    // while(front != NULL) // iterates to end of deck
+    // {
+    //     temp = front;
+    //     front = front->next;
+    //     delete temp;
+    // }
 }
 
 
-node<card> deck::insert(node<card> *curr, const card& newCard)
-{
-    cout << "here" << endl;
-	// Declare pointer for the new node
-	node<card> *newNode;
-
-	// Allocate new node with card as initial value
-	newNode = new node<card>(newCard);
-
-	// Make newNode the front of the curr linked list
-	newNode->next = curr;
-	
-	return *newNode; // return the new list
-}
 
 void deck::shuffle()
 {
     srand(time(0));
     int incrementer = 0;
 
-    for (int i = 0; i++; i <1000)
+    node<card> *prev, *curr;
+    for (int i = 0; i<1000; i++)
     {
-        node<card> *prev, *curr;
-        curr = front;
-        prev = curr->next;
-        int rand_int = rand() % 52;
+        cout << "here" << endl;
+        prev = front;
+        curr = prev->next;
+        int rand_int = rand() % 51;
         while(incrementer != rand_int)
         {
             curr = curr->next;
@@ -103,10 +99,14 @@ void deck::shuffle()
             incrementer += 1;
         }
         prev->next = curr->next;
-        *front = insert(front, curr->nodeValue);
-        delete curr;
-        delete prev;
+        card newCard(curr->nodeValue);
+        node<card> *newNode;
+        newNode = new node<card>(newCard);
+        newNode->next = front;
+        front = newNode;
         incrementer = 0;
+        prev = NULL;
+        curr = NULL;
     }
 }
 
