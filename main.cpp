@@ -10,9 +10,9 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include <d_node.h>
-#include <deck.h>
-#include <card.h>
+#include "d_node.h"
+#include "deck.h"
+#include "card.h"
 #include <cmath>
 
 using namespace std;

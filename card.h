@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include <d_node.h>
+#include "d_node.h"
 
 using namespace std;
 
@@ -81,7 +81,7 @@ string card::getSuit()
 ostream& operator<<(ostream& ostr, const card& card)
 // Function to overload the '<<' operator to print card objects
 {
-    ostr << "The card is a " << card._value << 'of' << card._suit << endl;
+    ostr << "The card is a " << card._value << " of " << card._suit << endl;
     return ostr;
 }
 

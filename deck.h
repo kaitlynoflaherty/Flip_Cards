@@ -12,8 +12,8 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include <card.h>
-#include <d_node.h>
+#include "card.h"
+#include "d_node.h"
 
 class deck
 // Class used to create card objects and functions
@@ -103,6 +103,7 @@ void deck::shuffle()
         prev->next = curr->next;
         *front = insert(front, curr->nodeValue);
         delete curr;
+        delete prev;
         incrementer = 0;
     }
 }
@@ -120,6 +121,8 @@ ostream& operator<<(ostream& ostr, const deck& deck)
         cout << curr->nodeValue;
         curr = curr->next;
     }
+    delete curr;
+    return ostr;
 }
 
 #endif
