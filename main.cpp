@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int calculate_points(int total_points, int value, string suit)
+int calculate_points(int total_points, card& value, card& suit)
 // Function to calculate the points per card chosen
 {
     if (value == 1)
