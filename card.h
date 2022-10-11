@@ -17,7 +17,7 @@ class card
     ~card(){};
 
     // Card member functions, friend functions
-    void setValue(int val);
+    void setValue(int value);
     void setSuit(string suit);
     int getValue();
     int getSuit();
@@ -43,7 +43,7 @@ card::card(int new_value, string new_suit)
 	_suit = new_suit;
 }
 
-void card::setValue(int val)
+void card::setValue(int value)
 // Function used to set the card value
 {
     _value = val;
@@ -61,7 +61,7 @@ int card::getValue()
     return _value;
 }
 
-int card::getSuit()
+string card::getSuit()
 //Function used to access private data member _suit
 {
     return _suit;
