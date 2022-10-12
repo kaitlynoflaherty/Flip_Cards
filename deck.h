@@ -32,6 +32,8 @@ class deck
 
 }; // end deck class
 
+deck::~deck(){}
+// Destructor
 
 deck::deck()
 // Constructor to create the 52 ordered card deck
@@ -65,24 +67,10 @@ deck::deck()
             }
         }
     }
-}
-
-
-deck::~deck()
-// Destructor that deletes the linked list
-{
-    // node<card> *temp;
-    // while(front != NULL) // iterates to end of deck
-    // {
-    //     temp = front;
-    //     front = front->next;
-    //     delete temp;
-    // }
-}
-
-
+} // End constructor
 
 void deck::shuffle()
+// Function to shuffle the deck
 {
     srand(time(0));
     int incrementer = 0;
@@ -109,7 +97,7 @@ void deck::shuffle()
         prev = NULL;
         curr = NULL;
     }
-}
+} // End Shuffle
 
 ostream& operator<<(ostream& ostr, const deck& deck)
 // Function to overload the '<<' operator to print card objects
@@ -126,6 +114,6 @@ ostream& operator<<(ostream& ostr, const deck& deck)
     }
     delete curr;
     return ostr;
-}
+} //  End operator<<
 
 #endif
