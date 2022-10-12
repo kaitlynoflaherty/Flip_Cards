@@ -32,9 +32,6 @@ class deck
 
 }; // end deck class
 
-deck::~deck(){}
-// Destructor
-
 deck::deck()
 // Constructor to create the 52 ordered card deck
 {
@@ -68,6 +65,9 @@ deck::deck()
         }
     }
 } // End constructor
+
+deck::~deck(){}
+// Destructor
 
 void deck::shuffle()
 // Function to shuffle the deck
