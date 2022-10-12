@@ -21,6 +21,6 @@ class node
       node(const T& item, node<T> *nextNode = NULL) : 
 			  nodeValue(item), next(nextNode)
       {}
-};
+}; // end node class
 
 #endif   // NODE_CLASS

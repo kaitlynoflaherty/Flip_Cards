@@ -63,9 +63,9 @@ deck::deck()
                 newNode->next = front;
                 front = newNode;
             }
-        }
-    }
-}
+        } // end for
+    } // end for
+} // end constructor
 
 
 deck::~deck()
@@ -80,9 +80,8 @@ deck::~deck()
     // }
 }
 
-
-
 void deck::shuffle()
+//Function to shuffle the deck
 {
     srand(time(0));
     int incrementer = 0;
@@ -90,16 +89,18 @@ void deck::shuffle()
     node<card> *prev, *curr;
     for (int i = 0; i<1000; i++)
     {
-        cout << "here" << endl;
         prev = front;
         curr = prev->next;
         int rand_int = rand() % 51;
+
         while(incrementer != rand_int)
         {
+            //Move current card to front 'rand_int' times
             curr = curr->next;
             prev = prev->next;
             incrementer += 1;
         }
+
         prev->next = curr->next;
         card newCard(curr->nodeValue);
         node<card> *newNode;
@@ -109,8 +110,8 @@ void deck::shuffle()
         incrementer = 0;
         prev = NULL;
         curr = NULL;
-    }
-}
+    } // end for
+} // end shuffle
 
 ostream& operator<<(ostream& ostr, const deck& deck)
 // Function to overload the '<<' operator to print card objects
@@ -127,6 +128,6 @@ ostream& operator<<(ostream& ostr, const deck& deck)
     }
     delete curr;
     return ostr;
-}
+} // end << overload function
 
 #endif
