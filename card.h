@@ -25,6 +25,11 @@ class card
     card(int val, string suit);
     ~card(){};
 
+    // PART B ********************************************
+    // Copy constructor and overloaded assignment operator
+    card(const card&);
+    card& operator = (const card&);
+
     // Card member functions, friend functions
     void setValue(int value);
     void setSuit(string suit);
@@ -46,12 +51,27 @@ card::card()
     _suit = "Spades";
 }
 
-
 card::card(int value, string suit)
 // Constructor: initializes card object with _value "value" and _suit "suit"
 {
     _value = value;
     _suit = suit;
+}
+
+// PART B ********************************************
+// Copy Constructor 
+card::card(const card &c) { 
+    _value = c._value;
+    _suit = c._suit;
+}
+
+// PART B ********************************************
+// Overloaded Assignment Operator
+card& card::operator= (const card &c)
+{
+    _value = c._value;
+    _suit = c._suit;
+    return *this;
 }
 
 void card::setValue(int value)
@@ -81,7 +101,7 @@ string card::getSuit()
 ostream& operator<<(ostream& ostr, const card& card)
 // Function to overload the '<<' operator to print card objects
 {
-    ostr << "The card is a " << card._value << " of " << card._suit << endl;
+    ostr << card._value << " of " << card._suit << endl;
     return ostr;
 }
 
