@@ -25,6 +25,7 @@ class deck
     // Card member functions, friend functions
     void shuffle();
     void replace(node<card> *node);
+    card deal();
     friend ostream& operator<<(ostream& ostr, const deck& deck);
 
     private:
@@ -129,10 +130,9 @@ card deck::deal()
 // Returns the top card in the deck and removes it
 {
     node<card> *curr = front;
-    top = &curr;
+    card top_card = curr->nodeValue;
     front = curr->next;
-    delete curr;
-    return top;
+    return top_card;
 }
 
 ostream& operator<<(ostream& ostr, const deck& deck)
