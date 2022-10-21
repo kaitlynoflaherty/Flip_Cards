@@ -24,7 +24,7 @@ class deck
     ~deck();
     // Card member functions, friend functions
     void shuffle();
-    node<card> insert(node<card> *curr, const card& item);
+    void replace(node<card> *node);
     friend ostream& operator<<(ostream& ostr, const deck& deck);
 
     private:
@@ -77,7 +77,8 @@ deck::~deck()
         curr = next;
     }
     front = NULL;
-}
+} // End destructor
+
 
 void deck::shuffle()
 // Function to shuffle the deck
@@ -109,6 +110,21 @@ void deck::shuffle()
     }
 } // End Shuffle
 
+
+void deck::replace(node<card> *bottom_card)
+// Function to move card to bottom of deck
+{
+    // copy of deck linked list
+    node<card> *curr = front;
+    // iterate throught the deck to the end
+    while( curr->next != NULL )
+    {
+        curr = curr->next;
+    }
+    curr->next = bottom_card; // 
+} // End replace
+
+
 ostream& operator<<(ostream& ostr, const deck& deck)
 // Function to overload the '<<' operator to print card objects
 {
@@ -125,5 +141,7 @@ ostream& operator<<(ostream& ostr, const deck& deck)
     delete curr;
     return ostr;
 } //  End operator<<
+
+
 
 #endif
