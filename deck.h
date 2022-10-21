@@ -66,8 +66,18 @@ deck::deck()
     }
 } // End constructor
 
-deck::~deck(){}
-// Destructor
+deck::~deck()
+// Destructor that deletes all cards and deallocates memory
+{
+    node<card> *curr = front;
+    while( curr != NULL )
+    {
+        node<card> *next = curr->next;
+        delete curr;
+        curr = next;
+    }
+    front = NULL;
+}
 
 void deck::shuffle()
 // Function to shuffle the deck
