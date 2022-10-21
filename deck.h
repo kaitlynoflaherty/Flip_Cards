@@ -109,6 +109,16 @@ void deck::shuffle()
     }
 } // End Shuffle
 
+card deck::deal() 
+// Returns the top card in the deck and removes it
+{
+    node<card> *curr = front;
+    top = &curr;
+    front = curr->next;
+    delete curr;
+    return top;
+}
+
 ostream& operator<<(ostream& ostr, const deck& deck)
 // Function to overload the '<<' operator to print card objects
 {
