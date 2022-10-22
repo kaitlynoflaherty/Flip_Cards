@@ -3,8 +3,10 @@
 // Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
 //
 // Description: Main function for Flip Cards part a program.
-// Implements a function main() which initializes a deck, d_52, and prints the 
-// deck in order. The deck is then shuffled and printed three tines.
+// Implements a function play_flip() which 
+//
+// Implements a function main() which calls play_flip().
+// Assumptions: The user will answer "NO" when prompted (capital letters)
 //
 
 #include <iostream>
@@ -16,21 +18,106 @@
 
 using namespace std;
 
-int main()
+
+int play_flip()
+// Function to 
 {
-    //create deck & print
+    //initialize variables
+    int total_points = 0, position = 0, choice;
+
+    //initiate game
+    // create deck & print
     deck d_52;
     cout << "The deck before shuffle:" << endl << d_52 << endl;
+
+    //shuffle full deck three times & print final result
+    d_52.shuffle();
+    d_52.shuffle();
+    d_52.shuffle();
+    cout << "Shuffled deck:" << endl << d_52 << endl;
+
+    //draw 24 cards to 'd_current' & print
+    deck d_current;
+    card temp_card;
+    for (int i = 0; i < 24; i++)
+    {
+        temp_card = d_52.deal();
+        d_current = temp_card.replace(node<card> *bottom_card);
+    }
+    //print 52 card deck & 24 card deck
+    cout << "d_52: " << endl; << d_52 << endl;
+    cout << "d_current:" << endl << d_current << endl;
+
+    //do while loop which continues if user does not enter 'NO'
+    do
+    {
+    //print current points
+    cout << "You have " << total_points << "points." << endl;
+
+    //ask user if they want to continue playing
+    cout << "Would you like to continue playing? Choose 1 to continue and" 
+    << "0 to quit." << endl;
+    cin >> choice;
+
+    //ask user to choose a position 1-24 
+    cout << "Please choose a card from position 1 - 24" << endl;
+    cin >> position;
     
-    // Shuffle deck three times & print
+    // range check for position 1 - 24
+    if (position < 1 || position > 24 )
+    {
+        cout << "This card is out of range." << endl;
+    }
 
-    d_52.shuffle();
-    cout << "Deck after 1st shuffle:" << endl << d_52 << endl;
+    // select a card, return value & suit
 
-    d_52.shuffle();
-    cout << "Deck after 2nd shuffle:" << endl << d_52 << endl;
+    
+    //calculate points
+    if (value == 1)
+    {
+        total_points += 10;
+    }
+    else if ((value >= 11) && (value <= 13))
+    {
+        total_points += 5;
+    }
+    else if (value == 7)
+    {
+        total_points = total_points / 2;
+        round(total_points);
+    }
+    else if ((value >= 2 && value <= 6))
+    {
+        total_points = 0;
+    }
+    else{}
+    
+    if (suit == "Heart")
+    {
+        total_points += 1;
+    }
+    
+    } 
+    while (choice != 0); // end while loop
 
-    d_52.shuffle();
-    cout << "Deck after 3rd shuffle:" << endl << d_52 << endl;
+    //print final points
+    cout << "You finished with " << total_points << "points!" << endl;
+    
+} // End play_flip
+
+int main()
+{
+    //initialize variables
+    int num_players;
+
+    //ask user how many players
+    cout << "How many people are playing Flip Cards?" << endl;
+    cin >> num_players;
+    
+    //will reinitialize for each new player.
+    for (int i = 0; i < num_players; i++)
+    {
+        play_flip();
+    }
 
 } // End main
