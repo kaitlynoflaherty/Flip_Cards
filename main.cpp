@@ -24,7 +24,7 @@ int play_flip()
 // Function to 
 {
     //initialize variables
-    int total_points = 0, position = 0, prev_position = 0;
+    int total_points = 0, position = 0, prev_position = 0, choice;
     vector<card> guesses;
 
     //initiate game
@@ -41,7 +41,7 @@ int play_flip()
     // Move 24 cards to 'd_current' (new deck) & print
     deck d_current;
     card temp_card;
-    card choice;
+    card card_choice;
     node<card> *front;
     front = NULL;
 
@@ -102,8 +102,8 @@ int play_flip()
         // select a card, return value & suit
         // BONUS: don't remove card
 
-        int value = choice.getValue();
-        string suit = choice.getSuit();
+        int value = card_choice.getValue();
+        string suit = card_choice.getSuit();
     
         //calculate points
         if (value == 1)
