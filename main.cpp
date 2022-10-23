@@ -15,6 +15,7 @@
 #include "deck.h"
 #include "card.h"
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
@@ -24,6 +25,7 @@ int play_flip()
 {
     //initialize variables
     int total_points = 0, position = 0, prev_position = 0, choice;
+    vector<card> guesses;
 
     //initiate game
     // create deck & print
@@ -54,7 +56,7 @@ int play_flip()
             d_current.replace(temp_card);
         }
 
-    }
+    } // end for loop
 
     //print 52 card deck & 24 card deck
     cout << "d_52: " << endl << d_52 << endl;
@@ -74,17 +76,27 @@ int play_flip()
         //ask user to choose a position 1-24 
         cout << "Please choose a card from position 1 - 24" << endl;
         cin >> position;
-    
+
         // range check for position 1 - 24
         if (position < 1 || position > 24 )
         {
             cout << "This card is out of range." << endl;
+            break;
         }
 
         // BONUS: avoid flipping same card
-        // idea: save each value already guessed to a container and compare each 
-        // new guess to the previous guesses w/ loop & comparison
-
+        // idea: save each value already guessed to a container (vector?) and  
+        // compare each new guess to the previous guesses w/ loop & comparison
+        // adding to vector requires overloading, there may be an easier solution ????
+        for (int i = 0; i < guesses.size(); i++)
+        {
+            if (position == guesses[i])
+            {
+                cout << "You already chose this card! Please pick a new one.";
+                cin >> position;
+                break;
+            }
+        }
 
         // select a card, return value & suit
         // BONUS: don't remove card
@@ -120,6 +132,9 @@ int play_flip()
 
         //update positon choice to previous choice to avoid repeated guesses
         prev_position = position;
+
+        //add to container
+        guesses.push_back(prev_position);
     
     } 
     while (choice != 0); // end do while loop
