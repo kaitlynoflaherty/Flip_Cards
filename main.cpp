@@ -89,7 +89,7 @@ int play_flip()
         // idea: save each value already guessed to a container (vector?) and  
         // compare each new guess to the previous guesses w/ loop & comparison
         // adding to vector requires overloading, there may be an easier solution ????
-        for (int i = 0; i < guesses.size(); i++)
+        /*for (int i = 0; i < guesses.size(); i++)
         {
             if (position == guesses[i])
             {
@@ -98,7 +98,7 @@ int play_flip()
                 break;
             }
         }
-
+        */ 
         // select a card, return value & suit
         // BONUS: don't remove card
 
@@ -134,7 +134,7 @@ int play_flip()
         prev_position = position;
 
         //add to container
-        guesses.push_back(prev_position);
+        //guesses.push_back(prev_position);
     
     } 
     while (choice != 0); // end do while loop
