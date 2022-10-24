@@ -41,7 +41,6 @@ int play_flip()
     cout << "Shuffled deck:" << endl << d_52 << endl;
 
     // Move 24 cards to 'd_current' (new deck) & print
-    // deck d_current(int 0);
     deck d_curr;
     node<card> *p;
 
