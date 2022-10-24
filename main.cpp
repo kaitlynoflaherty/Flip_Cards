@@ -39,25 +39,16 @@ int play_flip()
     cout << "Shuffled deck:" << endl << d_52 << endl;
 
     // Move 24 cards to 'd_current' (new deck) & print
-    deck d_current;
-    card temp_card;
-    card card_choice;
-    node<card> *front;
-    front = NULL;
+    deck d_curr;
+    node<card> p;
 
     for (int i = 0; i < 24; i++)
     {
-        temp_card = d_52.deal();
-        if (front == NULL)
-        {
-            front = new node<card>(temp_card);
-        }
-        else
-        {
-            d_current.replace(front);
-        }
-
+        p = d_52.deal();
+        d_curr.replace(&p);
     } // end for loop
+
+    // end for loop
 
     //print 52 card deck & 24 card deck
     cout << "d_52: " << endl << d_52 << endl;
