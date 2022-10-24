@@ -21,11 +21,12 @@ class deck
     public:
     //constructors and deconstructor
     deck();
+    deck(int n); // makes deck of n number of cards
     ~deck();
     // Card member functions, friend functions
     void shuffle();
     void replace(node<card> *node);
-    card deal();
+    node<card> deal();
     friend ostream& operator<<(ostream& ostr, const deck& deck);
 
     private:
@@ -34,6 +35,12 @@ class deck
 }; // end deck class
 
 deck::deck()
+// Constructor to create empty deck
+{
+    front = NULL;
+}
+
+deck::deck(int n)
 // Constructor to create the 52 ordered card deck
 {
     front = NULL;
@@ -41,7 +48,7 @@ deck::deck()
  
     for (int i = 0; i < 4; i++)
     {
-        for (int j = 13; j > 0; j--)
+        for (int j = n/4; j > 0; j--)
         {
             if (i == 1)
                 suit = "Hearts"; // change the suit
@@ -117,22 +124,32 @@ void deck::replace(node<card> *bottom_card)
 {
     // copy of deck linked list
     node<card> *curr = front;
-    // iterate throught the deck to the end
-    while( curr->next != NULL )
+    
+    if (front == NULL)
+    // check if deck is empty
     {
-        curr = curr->next;
+        front = bottom_card;
     }
-    curr->next = bottom_card; // 
+    else
+    // iterate throught the deck to the end
+    {
+        while( curr->next != NULL )
+        {
+            curr = curr->next;
+        }
+        curr->next = bottom_card;
+    }
 } // End replace
 
 
-card deck::deal() 
+node<card> deck::deal() 
 // Returns the top card in the deck and removes it
 {
     node<card> *curr = front;
-    card top_card = curr->nodeValue;
+    node<card> *top_card;
+    top_card->nodeValue = curr->nodeValue;
     front = curr->next;
-    return top_card;
+    return *top_card;
 }
 
 ostream& operator<<(ostream& ostr, const deck& deck)

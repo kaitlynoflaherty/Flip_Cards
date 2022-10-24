@@ -24,12 +24,14 @@ int play_flip()
 // Function to 
 {
     //initialize variables
-    int total_points = 0, position = 0, prev_position = 0, choice;
-    vector<card> guesses;
+    int total_points = 0, position = 0, prev_position = 0, choice = 1;
+    vector<int> guesses;
+    vector<card> cards;
 
     //initiate game
     // create deck & print
-    deck d_52;
+    deck d_52(52);
+
     cout << "The deck before shuffle:" << endl << d_52 << endl;
 
     //shuffle full deck three times & print final result
@@ -39,40 +41,26 @@ int play_flip()
     cout << "Shuffled deck:" << endl << d_52 << endl;
 
     // Move 24 cards to 'd_current' (new deck) & print
-    deck d_current;
-    card temp_card;
-    node<card> *front;
-    front = NULL;
+    // deck d_current(int 0);
+    deck d_curr;
+    node<card> *p;
 
     for (int i = 0; i < 24; i++)
     {
-        temp_card = d_52.deal();
-        if (front == NULL)
-        {
-            front = new node<card>(temp_card);
-        }
-        else
-        {
-            d_current.replace(temp_card);
-        }
-
+        p = &d_52.deal();
+        d_curr.replace(p);
     } // end for loop
 
-    //print 52 card deck & 24 card deck
-    cout << "d_52: " << endl << d_52 << endl;
-    cout << "d_current:" << endl << d_current << endl;
+  
+    //print top 24 card deck
+    cout << "Top 24 cards:" << endl << d_curr << endl;
+    
+    // Print remaining deck
+    cout << "Remaining deck: " << endl << d_52 << endl;
 
     //do while loop which continues if user does not enter 'NO'
     do
     {
-        //print current points
-        cout << "You have " << total_points << "points." << endl;
-
-        //ask user if they want to continue playing
-        cout << "Would you like to continue playing? Choose 1 to continue and" 
-        << "0 to quit." << endl;
-        cin >> choice;
-
         //ask user to choose a position 1-24 
         cout << "Please choose a card from position 1 - 24" << endl;
         cin >> position;
@@ -88,22 +76,29 @@ int play_flip()
         // idea: save each value already guessed to a container (vector?) and  
         // compare each new guess to the previous guesses w/ loop & comparison
         // adding to vector requires overloading, there may be an easier solution ????
-        for (int i = 0; i < guesses.size(); i++)
+        if (guesses.size() == 0)
         {
-            if (position == guesses[i])
+            guesses.push_back(position);
+        }
+        else
+        {
+            for (int i = 0; i < guesses.size(); i++)
             {
-                cout << "You already chose this card! Please pick a new one.";
-                cin >> position;
-                break;
+                if (position == guesses[i])
+                {
+                    cout << "You already chose this card! Please pick a new one.";
+                    cin >> position;
+                    break;
+                }
             }
+            guesses.push_back(position);
         }
 
         // select a card, return value & suit
         // BONUS: don't remove card
-
-
-        value = card_choice.getValue()
-        suit = card-choice.getSuit()
+       
+        int value = cards[position].getValue();
+        string suit = cards[position].getSuit();
     
         //calculate points
         if (value == 1)
@@ -130,12 +125,14 @@ int play_flip()
             total_points += 1;
         }
 
-        //update positon choice to previous choice to avoid repeated guesses
-        prev_position = position;
+        
+        //print current points
+        cout << "You have " << total_points << "points." << endl;
 
-        //add to container
-        guesses.push_back(prev_position);
-    
+        //ask user if they want to continue playing
+        cout << "Would you like to continue playing? Choose 1 to continue and" 
+        << "0 to quit." << endl;
+        cin >> choice;
     } 
     while (choice != 0); // end do while loop
 
