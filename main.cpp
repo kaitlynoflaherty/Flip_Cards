@@ -47,7 +47,7 @@ int play_flip()
 
     for (int i = 0; i < 24; i++)
     {
-        p = &d_52.deal();
+        p = d_52.deal();
         d_curr.replace(p);
     } // end for loop
 
