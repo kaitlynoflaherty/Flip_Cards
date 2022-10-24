@@ -120,7 +120,7 @@ int play_flip()
         }
         else{}
     
-        if (suit == "Heart")
+        if (suit == "Hearts")
         {
             total_points += 1;
         }
