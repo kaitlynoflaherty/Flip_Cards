@@ -1,69 +1,166 @@
+//Project #2: Flip Cards part a
+//
+// Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
+//
+// Description: Main function for Flip Cards part a program.
+// Implements a function play_flip() which 
+//
+// Implements a function main() which calls play_flip().
+// Assumptions: The user will answer "NO" when prompted (capital letters)
+//
+
 #include <iostream>
 #include <stdlib.h>
-#include <d_node.h>
-#include <deck.h>
-#include <card.h>
+#include "d_node.h"
+#include "deck.h"
+#include "card.h"
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
-int calculate_points(int total_points, int value, string suit)
-// Function to calculate the points per card chosen
+
+int play_flip()
+// Function to 
 {
-    if (value == 1)
+    //initialize variables
+    int total_points = 0, position = 0, prev_position = 0, choice;
+    vector<card> guesses;
+
+    //initiate game
+    // create deck & print
+    deck d_52;
+    cout << "The deck before shuffle:" << endl << d_52 << endl;
+
+    //shuffle full deck three times & print final result
+    d_52.shuffle();
+    d_52.shuffle();
+    d_52.shuffle();
+    cout << "Shuffled deck:" << endl << d_52 << endl;
+
+    // Move 24 cards to 'd_current' (new deck) & print
+    deck d_current;
+    card temp_card;
+    card card_choice;
+    node<card> *front;
+    front = NULL;
+
+    for (int i = 0; i < 24; i++)
     {
-        total_points += 10;
-    }
-    else if ((value >= 11) && (value <= 13))
+        temp_card = d_52.deal();
+        if (front == NULL)
+        {
+            front = new node<card>(temp_card);
+        }
+        else
+        {
+            d_current.replace(front);
+        }
+
+    } // end for loop
+
+    //print 52 card deck & 24 card deck
+    cout << "d_52: " << endl << d_52 << endl;
+    cout << "d_current:" << endl << d_current << endl;
+
+    //do while loop which continues if user does not enter 'NO'
+    do
     {
-        total_points += 5;
-    }
-    else if (value == 7)
-    {
-        total_points = total_points / 2;
-        round(total_points);
-    }
-    else if ((value >= 2 && value <= 6))
-    {
-        total_points = 0;
-    }
-    else{}
+        //print current points
+        cout << "You have " << total_points << "points." << endl;
+
+        //ask user if they want to continue playing
+        cout << "Would you like to continue playing? Choose 1 to continue and" 
+        << "0 to quit." << endl;
+        cin >> choice;
+
+        //ask user to choose a position 1-24 
+        cout << "Please choose a card from position 1 - 24" << endl;
+        cin >> position;
+
+        // range check for position 1 - 24
+        if (position < 1 || position > 24 )
+        {
+            cout << "This card is out of range." << endl;
+            break;
+        }
+
+        // BONUS: avoid flipping same card
+        // idea: save each value already guessed to a container (vector?) and  
+        // compare each new guess to the previous guesses w/ loop & comparison
+        // adding to vector requires overloading, there may be an easier solution ????
+        for (int i = 0; i < guesses.size(); i++)
+        {
+            if (position == guesses[i])
+            {
+                cout << "You already chose this card! Please pick a new one.";
+                cin >> position;
+                break;
+            }
+        }
+
+        // select a card, return value & suit
+        // BONUS: don't remove card
+
+        int value = card_choice.getValue();
+        string suit = card_choice.getSuit();
     
-    if (suit == "Heart")
-    {
-        total_points += 1;
-    }
+        //calculate points
+        if (value == 1)
+        {
+            total_points += 10;
+        }
+        else if ((value >= 11) && (value <= 13))
+        {
+            total_points += 5;
+        }
+        else if (value == 7)
+        {
+            total_points = total_points / 2;
+            round(total_points);
+        }
+        else if ((value >= 2 && value <= 6))
+        {
+            total_points = 0;
+        }
+        else{}
     
-    return total_points;
-} // End calculate_points
+        if (suit == "Heart")
+        {
+            total_points += 1;
+        }
+
+        //update positon choice to previous choice to avoid repeated guesses
+        prev_position = position;
+
+        //add to container
+        guesses.push_back(prev_position);
+    
+    } 
+    while (choice != 0); // end do while loop
+
+    //print final points
+    cout << "You finished with " << total_points << "points!" << endl;
+    
+} // End play_flip
 
 int main()
 {
-    //create deck & print
-    deck d_52;
-    cout << d_52;
-    // Shuffle deck three times
-    d_52.shuffle();
-    cout << d_52;
+    //initialize variables
+    int num_players;
 
-    d_52.shuffle();
-    cout << d_52;
-
-    d_52.shuffle();
-    cout << d_52;
-
-    // Initialize points
-    int total_points = 0;
-
-    //have user choose which card they want to flip
-
-
-    //calculate points
-    calculate_points(total_points, value, suit);
-
-    // print total points 
-    cout << "You currently have " << total_points << " points." << endl;
-
-    //ask user if they want to continue or end game
+    //ask user how many players
+    cout << "How many people are playing Flip Cards?" << endl;
+    cin >> num_players;
     
+    //will reinitialize for each new player.
+    for (int i = 0; i < num_players; i++)
+    {
+        play_flip();
+        cout << "The next player can begin!" << endl;
+    }
+
+    //compare player points and declare a winner (optional)
+
+
 } // End main
