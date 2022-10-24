@@ -1,4 +1,4 @@
-// Project #2: Flip Card part a
+// Project #2: Flip Card part b
 // 
 // Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
 //

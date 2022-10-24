@@ -1,4 +1,4 @@
-//Project #2: Flip Cards part a
+//Project #2: Flip Cards part b
 //
 // Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
 //
@@ -6,7 +6,7 @@
 // Implements a function play_flip() which 
 //
 // Implements a function main() which calls play_flip().
-// Assumptions: The user will answer "NO" when prompted (capital letters)
+// Assumptions: The user will answer 0 to quit the game (when prompted)
 //
 
 #include <iostream>

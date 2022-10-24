@@ -1,4 +1,4 @@
-// Project #2: Flip Card part a
+// Project #2: Flip Card part b
 // 
 // Group Members: Lisa Byrne, Alek Tunik, Kaite O'Flaherty
 //
@@ -42,7 +42,7 @@ deck::deck()
 }
 
 deck::deck(int n)
-// Constructor to create the 52 ordered card deck
+// Constructor to create a deck of n cards (used for 52 ordered card deck)
 {
     front = NULL;
     string suit = "Spades"; // starting suit
@@ -154,7 +154,7 @@ node<card> * deck::deal()
 }
 
 card deck::getCard(int position)
-// function that returns a card at a given position
+// Function that returns a card at a given position
 {
     node<card> *curr = front;
     while (position != 1){
@@ -162,7 +162,7 @@ card deck::getCard(int position)
         position -= 1;
     }
     return curr->nodeValue;
-}
+} // End getCard
 
 ostream& operator<<(ostream& ostr, const deck& deck)
 // Function to overload the '<<' operator to print card objects
