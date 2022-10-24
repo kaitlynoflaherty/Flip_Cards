@@ -57,7 +57,7 @@ int play_flip()
     // Print remaining deck
     cout << "Remaining deck: " << endl << d_52 << endl;
 
-    //do while loop which continues if user does not enter 'NO'
+    //do while loop which continues if user does not enter '0'
     do
     {
         //ask user to choose a position 1-24 
@@ -72,9 +72,8 @@ int play_flip()
         }
 
         // BONUS: avoid flipping same card
-        // idea: save each value already guessed to a container (vector?) and  
+        // idea: save each value already guessed to a vector and  
         // compare each new guess to the previous guesses w/ loop & comparison
-        // adding to vector requires overloading, there may be an easier solution ????
         if (guesses.size() == 0)
         {
             guesses.push_back(position);
@@ -156,8 +155,5 @@ int main()
         play_flip();
         cout << "The next player can begin!" << endl;
     }
-
-    //compare player points and declare a winner (optional)
-
 
 } // End main
