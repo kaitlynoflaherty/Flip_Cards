@@ -54,7 +54,7 @@ int play_flip()
         }
         else
         {
-            d_current.replace(temp_card);
+            d_current.replace(front);
         }
 
     } // end for loop
