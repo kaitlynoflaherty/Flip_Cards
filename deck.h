@@ -148,7 +148,7 @@ node<card> * deck::deal()
 {
     node<card> *curr = front;
     node<card> *top_card;
-    top_card->nodeValue = curr->nodeValue;
+    top_card = new node<card>(curr->nodeValue);
     front = curr->next;
     return top_card;
 }

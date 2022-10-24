@@ -97,6 +97,7 @@ int play_flip()
         // select a card, return value & suit
         // BONUS: don't remove card
         card chosen_card = d_curr.getCard(position);
+        cout << "The card is " << chosen_card << endl;
         int value = chosen_card.getValue();
         string suit = chosen_card.getSuit();
     
@@ -127,17 +128,17 @@ int play_flip()
 
         
         //print current points
-        cout << "You have " << total_points << "points." << endl;
+        cout << "You have " << total_points << " points." << endl;
 
         //ask user if they want to continue playing
         cout << "Would you like to continue playing? Choose 1 to continue and" 
-        << "0 to quit." << endl;
+        << " 0 to quit." << endl;
         cin >> choice;
     } 
     while (choice != 0); // end do while loop
 
     //print final points
-    cout << "You finished with " << total_points << "points!" << endl;
+    cout << "You finished with " << total_points << " points!" << endl;
     
 } // End play_flip
 

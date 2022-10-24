@@ -27,8 +27,8 @@ class card
 
     // PART B ********************************************
     // Copy constructor and overloaded assignment operator
-    card(const card&);
-    card& operator = (const card &c);
+    card(const card &c);
+    card& operator= (const card &);
 
     // Card member functions, friend functions
     void setValue(int value);
@@ -67,10 +67,15 @@ card::card(const card &c) {
 
 // PART B ********************************************
 // Overloaded Assignment Operator
-card& card::operator= (const card &c)
+card& card::operator=(const card &c)
 {
-    card newCard = card(c._value, c._suit);
-    return newCard;
+    if(this == &c)
+    {
+        return *this;
+    }
+    _value = c._value;
+    _suit = c._suit;
+    return *this;
 }
 
 void card::setValue(int value)
