@@ -97,7 +97,7 @@ int play_flip()
         // select a card, return value & suit
         // BONUS: don't remove card
         card chosen_card = d_curr.getCard(position);
-        cout << "The card is " << chosen_card << endl;
+        cout << endl << "The card is " << chosen_card << endl;
         int value = chosen_card.getValue();
         string suit = chosen_card.getSuit();
     
