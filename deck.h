@@ -27,6 +27,7 @@ class deck
     void shuffle();
     void replace(node<card> *node);
     node<card> deal();
+    card deck::getCard(int position);
     friend ostream& operator<<(ostream& ostr, const deck& deck);
 
     private:
@@ -150,6 +151,17 @@ node<card> deck::deal()
     top_card->nodeValue = curr->nodeValue;
     front = curr->next;
     return *top_card;
+}
+
+card deck::getCard(int position)
+// function that returns a card at a given position
+{
+    node<card> *curr = front;
+    while (position != 1){
+        curr = curr->next;
+        position -= 1;
+    }
+    return curr->nodeValue;
 }
 
 ostream& operator<<(ostream& ostr, const deck& deck)

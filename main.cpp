@@ -96,9 +96,9 @@ int play_flip()
 
         // select a card, return value & suit
         // BONUS: don't remove card
-       
-        int value = cards[position].getValue();
-        string suit = cards[position].getSuit();
+        card chosen_card = d_curr.getCard(position);
+        int value = chosen_card.getValue();
+        string suit = chosen_card.getSuit();
     
         //calculate points
         if (value == 1)
